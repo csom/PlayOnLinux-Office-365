@@ -151,11 +151,22 @@ echo -e 'REGEDIT4
 
 [HKEY_CURRENT_USER\Software\Wine\AppDefaults]
 
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\MCC-Win64-Shipping.exe]
+
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\MCC-Win64-Shipping.exe\DllOverrides]
+"concrt140"="native, builtin"
+
 [HKEY_CURRENT_USER\Software\Wine\AppDefaults\outlook.exe]
 
 [HKEY_CURRENT_USER\Software\Wine\AppDefaults\outlook.exe\DllOverrides]
 "activeds"="native,builtin"
 "riched20"="native"
+
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\vc_redist.x64.exe]
+
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\vc_redist.x64.exe\DllOverrides]
+"msxml2"="builtin, native"
+"msxml3"="builtin, native"
 
 [HKEY_CURRENT_USER\Software\Wine\AppDefaults\winemenubuilder.exe]
 
@@ -175,21 +186,87 @@ echo -e 'REGEDIT4
 [HKEY_CURRENT_USER\Software\Wine\Direct2D]
 "max_version_factory"=dword:00000000
 
+[HKEY_CURRENT_USER\Software\Wine\Direct3D]
+"MaxVersionGL"=dword:00030002
+
 [HKEY_CURRENT_USER\Software\Wine\DllOverrides]
 "*msxml6"=-
 "*riched20"=-
-"mshtml"="native,builtin"
-"msxml6"="native,builtin"
+"*autorun.exe"="native,builtin"
+"*ctfmon.exe"="builtin"
+"*ddhelp.exe"="builtin"
+"*docbox.api"=""
+"*findfast.exe"="builtin"
+"*ieinfo5.ocx"="builtin"
+"*maildoff.exe"="builtin"
+"*mdm.exe"="builtin"
+"*mosearch.exe"="builtin"
+"*msiexec.exe"="builtin"
+"*pstores.exe"="builtin"
+"*user.exe"="native,builtin"
+"amstream"="native, builtin"
+"atl"="native, builtin"
+"concrt140"="native"
+"crypt32"="native, builtin"
+"d3dxof"="native, builtin"
+"dciman32"="native"
+"devenum"="native, builtin"
+"dplay"="native, builtin"
+"dplaysvr.exe"="native, builtin"
+"dplayx"="native, builtin"
+"dpnaddr"="native, builtin"
+"dpnet"="native, builtin"
+"dpnhpast"="native, builtin"
+"dpnhupnp"="native, builtin"
+"dpnlobby"="native, builtin"
+"dpnsvr.exe"="native, builtin"
+"dpnwsock"="native, builtin"
+"dxdiagn"="native, builtin"
+"hhctrl.ocx"="native, builtin"
+"hlink"="native, builtin"
+"iernonce"="native, builtin"
+"itss"="native, builtin"
+"jscript"="native, builtin"
+"mlang"="native, builtin"
+"mshtml"="native, builtin"
+"msi"="builtin"
+"msvcirt"="native, builtin"
+"msvcp140"="native,builtin"
+"msvcrt40"="native, builtin"
+"msvcrtd"="native, builtin"
+"msxml6"="native, builtin"
+"odbc32"="native, builtin"
+"odbccp32"="native, builtin"
+"ole32"="builtin"
+"oleaut32"="builtin"
+"olepro32"="builtin"
+"quartz"="native, builtin"
 "riched20"="native,builtin"
+"riched32"="native, builtin"
+"rpcrt4"="builtin"
+"rsabase"="native, builtin"
+"secur32"="native, builtin"
+"shdoclc"="native, builtin"
+"shdocvw"="native, builtin"
+"softpub"="native, builtin"
+"urlmon"="native, builtin"
+"wininet"="builtin"
+"wintrust"="native, builtin"
+"wscript.exe"="native, builtin"
+
+[HKEY_CURRENT_USER\Software\Wine\\EnableOLEQuitFix]
+@=""
+
+[HKEY_CURRENT_USER\Software\Wine\\EnableUIAutomationCore]
+@=""
 
 [HKEY_CURRENT_USER\Software\Wine\Fonts\Replacements]
-"@MS UI Gothic"="@Ume UI Gothic"
-"Arial"="Bitstream Vera Sans"
-"Cambria Math"="Asana Math"
-"Gulim"="NanumGothic"
-"Lucida Console"="MS Sans Serif"
-"MS UI Gothic"="Ume UI Gothic"
+"Arial"="FreeSans"
+"Lucida Console"="FreeSerif"
 "Segoe UI Semilight"="Tahoma"
+
+[HKEY_CURRENT_USER\Software\Wine\Mac Driver]
+"OpenGLSurfaceMode"="behind"
 
 [HKEY_CURRENT_USER\Software\Wine\MSHTML]
 
