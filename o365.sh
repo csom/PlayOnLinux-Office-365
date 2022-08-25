@@ -183,11 +183,12 @@ echo -e 'REGEDIT4
 [HKEY_CURRENT_USER\Software\Wine\AppDefaults\winewrapper.exe\\Explorer]
 "Desktop"="root"
 
+[HKEY_CURRENT_USER\Software\Wine\Debug]
+"RelayExclude"="ntdll.LdrFindResource_U;ntdll.NtCreateSection;ntdll.NtMapViewOfSection;ntdll.NtQueryAttributesFile;ntdll.NtClose;ntdll.NtOpenFile;ole32.CoUninitialize;ntdll.RtlEnterCriticalSection;ntdll.RtlLeaveCriticalSection;kernel32.48;kernel32.49;kernel32.94;kernel32.95;kernel32.96;kernel32.97;kernel32.98;kernel32.TlsGetValue;kernel32.TlsSetValue;kernel32.FlsGetValue;kernel32.FlsSetValue;kernel32.SetLastError"
+"RelayFromExclude"=""
+
 [HKEY_CURRENT_USER\Software\Wine\Direct2D]
 "max_version_factory"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Wine\Direct3D]
-"MaxVersionGL"=dword:00030002
 
 [HKEY_CURRENT_USER\Software\Wine\DllOverrides]
 "*msxml6"=-
@@ -274,7 +275,10 @@ echo -e 'REGEDIT4
 @=""
 
 [HKEY_CURRENT_USER\Software\Wine\X11 Driver]
-"ScreenDepth"="32"' > winesetup.reg
+"ScreenDepth"="32"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration]
+"CDNBaseUrl"="http://officecdn.microsoft.com/pr/7ffbc6bf-bc32-4f92-8982-f9dd17fd3114"' > winesetup.reg
 
 POL_Wine regedit winesetup.reg
    
@@ -315,10 +319,19 @@ then
 	cd "$POL_System_TmpDir"
 	echo -e 'REGEDIT4
 
-[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Setup]
-"DisableOffice365SimplifiedAccountCreation"=dword:00000001' > outlook.reg
+[HKEY_USERS\S-1-5-21-0-0-0-1000\Software\Microsoft\Office\16.0\PowerPoint\Options]
+DisableBootToOfficeStart=dword:00000001
 
-	POL_Wine regedit outlook.reg
+[HKEY_USERS\S-1-5-21-0-0-0-1000\Software\Microsoft\Office\16.0\Word\Options]
+DisableBootToOfficeStart=dword:00000001
+
+[HKEY_USERS\S-1-5-21-0-0-0-1000\Software\Microsoft\Office\16.0\Excel\Options]
+DisableBootToOfficeStart=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Setup]
+"DisableOffice365SimplifiedAccountCreation"=dword:00000001' > postreg.reg
+
+	POL_Wine regedit postreg.reg
 
 	
 	POL_SetupWindow_message "$(eval_gettext '$TITLE has been installed successfully!\n\nThanks!\nBy csoM')" "$TITLE"
