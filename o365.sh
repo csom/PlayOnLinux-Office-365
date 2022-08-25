@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Date : (2022-08-23)
-# Last revision : (2022-08-23)
-# Wine version used : cxx-6.0
+# Last revision : (2022-08-25)
+# Wine version used : cx-6.0
 # Distribution used to test : Ubuntu 22.04 LTS
 # Author : csoM
 # PlayOnLinux : 4.3.4
@@ -310,7 +310,19 @@ then
 	#POL_Extension_Write xlsx "Microsoft Excel 365"
 	#POL_Extension_Write ppt "Microsoft Powerpoint 365"
 	#POL_Extension_Write pptx "Microsoft Powerpoint 365"
+	
+	# Change to manual account creation in Outlook
+	cd "$POL_System_TmpDir"
+	echo -e 'REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Setup]
+"DisableOffice365SimplifiedAccountCreation"=dword:00000001' > outlook.reg
+
+	POL_Wine regedit outlook.reg
+
+	
 	POL_SetupWindow_message "$(eval_gettext '$TITLE has been installed successfully!\n\nThanks!\nBy csoM')" "$TITLE"
+	
 fi
 
 # Delete the temporary files and exit
