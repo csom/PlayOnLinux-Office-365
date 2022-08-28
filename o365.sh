@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Date : (2022-08-23)
-# Last revision : (2022-08-25)
+# Last revision : (2022-08-28)
 # Wine version used : cx-6.0
 # Distribution used to test : Ubuntu 22.04 LTS
 # Author : csoM
@@ -70,7 +70,13 @@ cd "$POL_System_TmpDir"
 POL_Download "$DOWNLOAD_URL"
 DOWNLOAD_FILE="$(basename "$DOWNLOAD_URL")"
 SetupMonoIs="$POL_System_TmpDir/$DOWNLOAD_FILE"
-https://dl.winehq.org/wine/wine-mono/7.0.0/wine-mono-7.0.0-x86.msi
+
+# Download Asana Font
+DOWNLOAD_URL="https://ctan.org/tex-archive/fonts/Asana-Math/ASANA.TTC"
+cd "$POL_System_TmpDir"
+POL_Download "$DOWNLOAD_URL"
+DOWNLOAD_FILE="$(basename "$DOWNLOAD_URL")"
+ASANAFONT="$POL_System_TmpDir/$DOWNLOAD_FILE"
 
 # Choose installer file
 POL_SetupWindow_browse "$(eval_gettext 'Please select the setup file to install.')" "$TITLE"
@@ -80,6 +86,7 @@ SetupIs="$APP_ANSWER"
 POL_Call POL_Install_msxml6
 POL_Call POL_Install_riched20
 POL_Call POL_Install_corefonts
+cp "$ASANAFONT" "$WINEPREFIX/drive_c/windows/Fonts/"
 POL_AutoWine "$SetupMonoIs"
 
 # Change to Windows 2000 to allow MSCXML 6.0 SP2 to be installed
@@ -263,6 +270,7 @@ echo -e 'REGEDIT4
 
 [HKEY_CURRENT_USER\Software\Wine\Fonts\Replacements]
 "Arial"="FreeSans"
+"Cambria Math"="Asana Math"
 "Lucida Console"="FreeSerif"
 "Segoe UI Semilight"="Tahoma"
 
