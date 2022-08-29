@@ -271,7 +271,7 @@ echo -e 'REGEDIT4
 [HKEY_CURRENT_USER\Software\Wine\Fonts\Replacements]
 "Arial"="FreeSans"
 "Cambria Math"="Asana Math"
-"Lucida Console"="FreeSerif"
+"Lucida Console"="MS Sans Serif"
 "Segoe UI Semilight"="Tahoma"
 
 [HKEY_CURRENT_USER\Software\Wine\Mac Driver]
