@@ -316,12 +316,12 @@ then
 	# NOTE: Add an entry to PlayOnLinux's extension file. If the entry already
 	# exists, it will replace it! By Questor
 	# [Ref.: https://github.com/PlayOnLinux/POL-POM-4/blob/master/lib/playonlinux.lib]
-	#POL_Extension_Write doc "Microsoft Word 365"
-	#POL_Extension_Write docx "Microsoft Word 365"
-	#POL_Extension_Write xls "Microsoft Excel 365"
-	#POL_Extension_Write xlsx "Microsoft Excel 365"
-	#POL_Extension_Write ppt "Microsoft Powerpoint 365"
-	#POL_Extension_Write pptx "Microsoft Powerpoint 365"
+	POL_Extension_Write doc "Microsoft Word 365"
+	POL_Extension_Write docx "Microsoft Word 365"
+	POL_Extension_Write xls "Microsoft Excel 365"
+	POL_Extension_Write xlsx "Microsoft Excel 365"
+	POL_Extension_Write ppt "Microsoft Powerpoint 365"
+	POL_Extension_Write pptx "Microsoft Powerpoint 365"
 	
 	# Change to manual account creation in Outlook
 	cd "$POL_System_TmpDir"
