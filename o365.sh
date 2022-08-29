@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Date : (2022-08-23)
-# Last revision : (2022-08-28)
+# Last revision : (2022-08-29)
 # Wine version used : cx-6.0
 # Distribution used to test : Ubuntu 22.04 LTS
 # Author : csoM
