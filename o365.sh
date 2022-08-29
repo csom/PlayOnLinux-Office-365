@@ -23,7 +23,7 @@ POL_GetSetupImages "https://i.imgur.com/licFVuF.png" "https://i.imgur.com/ff6PkE
 POL_SetupWindow_Init
 POL_SetupWindow_SetID 3066
 
-POL_SetupWindow_message "$(eval_gettext 'Please make sure to have CodeWeavers Wine version 21.2.0 installed in location ".PlayOnLinux/wine/linux-x86/cxx-22" before you continue with your installation.\n\nThanks!\nBy csoM')" "$TITLE"
+POL_SetupWindow_message "$(eval_gettext 'Please make sure to have CodeWeavers Wine version 22.0.0 installed in location ".PlayOnLinux/wine/linux-x86/cxx-22" before you continue with your installation.\n\nThanks!\nBy csoM')" "$TITLE"
    
 POL_SetupWindow_presentation "$TITLE" "Microsoft" "http://www.microsoft.com" "csoM" "$PREFIX"
    
@@ -328,12 +328,12 @@ then
 	# NOTE: Add an entry to PlayOnLinux's extension file. If the entry already
 	# exists, it will replace it! By Questor
 	# [Ref.: https://github.com/PlayOnLinux/POL-POM-4/blob/master/lib/playonlinux.lib]
-	#POL_Extension_Write doc "Microsoft Word 365"
-	#POL_Extension_Write docx "Microsoft Word 365"
-	#POL_Extension_Write xls "Microsoft Excel 365"
-	#POL_Extension_Write xlsx "Microsoft Excel 365"
-	#POL_Extension_Write ppt "Microsoft Powerpoint 365"
-	#POL_Extension_Write pptx "Microsoft Powerpoint 365"
+	POL_Extension_Write doc "Microsoft Word 365"
+	POL_Extension_Write docx "Microsoft Word 365"
+	POL_Extension_Write xls "Microsoft Excel 365"
+	POL_Extension_Write xlsx "Microsoft Excel 365"
+	POL_Extension_Write ppt "Microsoft Powerpoint 365"
+	POL_Extension_Write pptx "Microsoft Powerpoint 365"
 	
 	# Change to manual account creation in Outlook
 	cd "$POL_System_TmpDir"
