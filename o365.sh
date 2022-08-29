@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Date : (2022-08-23)
-# Last revision : (2022-08-28)
-# Wine version used : cx-6.0
+# Last revision : (2022-08-29)
+# Wine version used : cx-7.7
 # Distribution used to test : Ubuntu 22.04 LTS
 # Author : csoM
 # PlayOnLinux : 4.3.4
@@ -15,7 +15,7 @@ source "$PLAYONLINUX/lib/sources"
    
 TITLE="Microsoft Office 365"
 PREFIX="Office365"
-WINEVERSION="cxx"
+WINEVERSION="cxx-22"
 ARCH="x86"
    
 POL_GetSetupImages "https://i.imgur.com/licFVuF.png" "https://i.imgur.com/ff6PkEZ.png" "$TITLE"
@@ -23,7 +23,7 @@ POL_GetSetupImages "https://i.imgur.com/licFVuF.png" "https://i.imgur.com/ff6PkE
 POL_SetupWindow_Init
 POL_SetupWindow_SetID 3066
 
-POL_SetupWindow_message "$(eval_gettext 'Please make sure to have CodeWeavers Wine version 21.2.0 installed in location ".PlayOnLinux/wine/linux-x86/cxx" before you continue with your installation.\n\nThanks!\nBy csoM')" "$TITLE"
+POL_SetupWindow_message "$(eval_gettext 'Please make sure to have CodeWeavers Wine version 21.2.0 installed in location ".PlayOnLinux/wine/linux-x86/cxx-22" before you continue with your installation.\n\nThanks!\nBy csoM')" "$TITLE"
    
 POL_SetupWindow_presentation "$TITLE" "Microsoft" "http://www.microsoft.com" "csoM" "$PREFIX"
    
@@ -64,12 +64,19 @@ DOWNLOAD_FILE="$(basename "$DOWNLOAD_URL")"
 SetupSP2Is="$POL_System_TmpDir/$DOWNLOAD_FILE"
 
 
-# Download Wine Mono 7.0.0
-DOWNLOAD_URL="https://dl.winehq.org/wine/wine-mono/7.0.0/wine-mono-7.0.0-x86.msi"
+# Download Wine Mono 7.3.0
+DOWNLOAD_URL="https://dl.winehq.org/wine/wine-mono/7.3.0/wine-mono-7.3.0-x86.msi"
 cd "$POL_System_TmpDir"
 POL_Download "$DOWNLOAD_URL"
 DOWNLOAD_FILE="$(basename "$DOWNLOAD_URL")"
 SetupMonoIs="$POL_System_TmpDir/$DOWNLOAD_FILE"
+
+# Download Wine Geko 2.47.2
+DOWNLOAD_URL="https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86.msi"
+cd "$POL_System_TmpDir"
+POL_Download "$DOWNLOAD_URL"
+DOWNLOAD_FILE="$(basename "$DOWNLOAD_URL")"
+SetupGeckoIs="$POL_System_TmpDir/$DOWNLOAD_FILE"
 
 # Download Asana Font
 DOWNLOAD_URL="https://ctan.org/tex-archive/fonts/Asana-Math/ASANA.TTC"
@@ -88,6 +95,7 @@ POL_Call POL_Install_riched20
 POL_Call POL_Install_corefonts
 cp "$ASANAFONT" "$WINEPREFIX/drive_c/windows/Fonts/"
 POL_AutoWine "$SetupMonoIs"
+POL_AutoWine "$SetupGeckoIs"
 
 # Change to Windows 2000 to allow MSCXML 6.0 SP2 to be installed
 cd "$POL_System_TmpDir"
@@ -197,6 +205,9 @@ echo -e 'REGEDIT4
 [HKEY_CURRENT_USER\Software\Wine\Direct2D]
 "max_version_factory"=dword:00000000
 
+[HKEY_CURRENT_USER\Software\Wine\Direct3D]
+"cb_access_map_w"=dword:00000001
+
 [HKEY_CURRENT_USER\Software\Wine\DllOverrides]
 "*msxml6"=-
 "*riched20"=-
@@ -257,6 +268,7 @@ echo -e 'REGEDIT4
 "shdoclc"="native, builtin"
 "shdocvw"="native, builtin"
 "softpub"="native, builtin"
+"sppc"="disable"
 "urlmon"="native, builtin"
 "wininet"="builtin"
 "wintrust"="native, builtin"
@@ -271,7 +283,7 @@ echo -e 'REGEDIT4
 [HKEY_CURRENT_USER\Software\Wine\Fonts\Replacements]
 "Arial"="FreeSans"
 "Cambria Math"="Asana Math"
-"Lucida Console"="FreeSerif"
+"Lucida Console"="MS Sans Serif"
 "Segoe UI Semilight"="Tahoma"
 
 [HKEY_CURRENT_USER\Software\Wine\Mac Driver]
@@ -305,10 +317,10 @@ then
 	POL_Shortcut "POWERPNT.EXE" "Microsoft Powerpoint 365" "" "" "Office;Presentation;"
 	   
 	# NOTE: No category for collaborative work? 
-	POL_Shortcut "ONENOTE.EXE" "Microsoft OneNote 365" "" "" "Network;InstantMessaging;"
+	POL_Shortcut "ONENOTE.EXE" "Microsoft OneNote 2016" "" "" "Network;InstantMessaging;"
 	   
 	# NOTE: "Calendar;ContactManagement;"? 
-	POL_Shortcut "OUTLOOK.EXE" "Microsoft Outlook 2016" "" "" "Network;Email;"
+	POL_Shortcut "OUTLOOK.EXE" "Microsoft Outlook 365" "" "" "Network;Email;"
 	
 	# NOTE: "Storage;"? 
 	#POL_Shortcut "OneDrive.EXE" "Microsoft OneDrive 365" "" "" "Network;Storage;"
@@ -333,7 +345,7 @@ then
 [HKEY_USERS\S-1-5-21-0-0-0-1000\Software\Microsoft\Office\16.0\Word\Options]
 "DisableBootToOfficeStart"=dword:00000001
 
-[HKEY_USERS\S-1-5-21-0-0-0-1000\Software\Microsoft\Office\16.0\Excel\Options]
+[HKEY_USERS\S-1-5-21-0-0-0-1000\Software\Microsoft\Office\16.0\\Excel\Options]
 "DisableBootToOfficeStart"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Setup]
