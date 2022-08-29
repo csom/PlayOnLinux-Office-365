@@ -305,10 +305,10 @@ then
 	POL_Shortcut "POWERPNT.EXE" "Microsoft Powerpoint 365" "" "" "Office;Presentation;"
 	   
 	# NOTE: No category for collaborative work? 
-	POL_Shortcut "ONENOTE.EXE" "Microsoft OneNote 365" "" "" "Network;InstantMessaging;"
+	POL_Shortcut "ONENOTE.EXE" "Microsoft OneNote 2016" "" "" "Network;InstantMessaging;"
 	   
 	# NOTE: "Calendar;ContactManagement;"? 
-	POL_Shortcut "OUTLOOK.EXE" "Microsoft Outlook 2016" "" "" "Network;Email;"
+	POL_Shortcut "OUTLOOK.EXE" "Microsoft Outlook 365" "" "" "Network;Email;"
 	
 	# NOTE: "Storage;"? 
 	#POL_Shortcut "OneDrive.EXE" "Microsoft OneDrive 365" "" "" "Network;Storage;"
