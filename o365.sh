@@ -333,7 +333,7 @@ then
 [HKEY_USERS\S-1-5-21-0-0-0-1000\Software\Microsoft\Office\16.0\Word\Options]
 "DisableBootToOfficeStart"=dword:00000001
 
-[HKEY_USERS\S-1-5-21-0-0-0-1000\Software\Microsoft\Office\16.0\Excel\Options]
+[HKEY_USERS\S-1-5-21-0-0-0-1000\Software\Microsoft\Office\16.0\\Excel\Options]
 "DisableBootToOfficeStart"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Setup]
