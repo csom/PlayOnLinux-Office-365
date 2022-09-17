@@ -177,9 +177,9 @@ echo -e 'REGEDIT4
 "activeds"="native,builtin"
 "riched20"="native"
 
-[HKEY_CURRENT_USER\Software\Wine\AppDefaults\vc_redist.x64.exe]
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\\vc_redist.x64.exe]
 
-[HKEY_CURRENT_USER\Software\Wine\AppDefaults\vc_redist.x64.exe\DllOverrides]
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\\vc_redist.x64.exe\DllOverrides]
 "msxml2"="builtin, native"
 "msxml3"="builtin, native"
 
